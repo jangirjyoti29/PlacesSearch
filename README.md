@@ -1,9 +1,9 @@
 # PlacesSearch
 
-This is an app which fetchs near by Food Places using Foursquare API.
+This is an app which fetches nearby Food Places using Foursquare API.
 
-Feature : 
+Feature :
 - Table View for rendering all Places.
-- Filter feature which is having Range, Sorting and Categories filters.
-- User can check all related places to a perticular Place.
+- Filter feature has Range, Sorting and Categories filters.
+- Users can check all related places to a particular Place.
 
