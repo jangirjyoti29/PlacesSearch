@@ -19,6 +19,7 @@ class ADTopBarView: UIView {
         label.font = ADFont.systemBold_30
         label.text = ADString.allPlaces
         label.textAlignment = .left
+        label.textColor = ADColor.black
         return label
     }()
     

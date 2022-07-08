@@ -32,27 +32,10 @@ extension URLSession {
             }
             do {
                 let value = try JSONDecoder().decode(expecting, from:data)
-                complition(.success(value ))
+                complition(.success(value))
             } catch {
                 complition(.failure(error))
             }
-        }
-        task.resume()
-    }
-    
-    func load(url:URL, headers:[String:String], complition: @escaping (Data?, Error?) -> ()) {
-        let request = NSMutableURLRequest(url: url,cachePolicy: .useProtocolCachePolicy, timeoutInterval: 10.0)
-        request.allHTTPHeaderFields = headers
-        let task = dataTask(with: request as URLRequest) { data, _ , error in
-            guard let data = data else {
-                if let error = error {
-                    complition(nil, error)
-                }else {
-                    complition(nil, APIError.invalidData)
-                }
-                return
-            }
-            complition(data, nil)
         }
         task.resume()
     }

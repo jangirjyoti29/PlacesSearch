@@ -113,7 +113,6 @@ class ADPlaceFooterView: UITableViewHeaderFooterView, UICollectionViewDelegate, 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ADString.categoryCellId, for: indexPath) as! ADCategoryCell
         cell.setCategoryData(category: dataSource[indexPath.row], indexPath: indexPath)
-
         return cell
     }
     

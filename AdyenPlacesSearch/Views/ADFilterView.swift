@@ -11,6 +11,7 @@ enum ADFiltersSort: String {
     case distance
     case name
 }
+
 enum ADFiltersCategory: String {
     case one
     case two
@@ -24,6 +25,9 @@ enum ADFiltersAction: Int {
     case apply
 }
 
+/**
+ All the filter types.
+ */
 struct ADFiltersType {
     var range:Int?
     var totalRange:Int?
@@ -35,6 +39,12 @@ protocol ADFilterViewDelegate : AnyObject {
     func didPerformFilter(action:ADFiltersAction, type:ADFiltersType?)
 }
 
+/**
+ An object which is resposible for Filter View.
+ - It is having Range, Sorting and Categories filters.
+ - On Tap on reset button, All the applied filter will be removed and original data will be reloaded.
+ - On Tap on apply button, Places data will be loaded according to applied filters.
+ */
 class ADFilterView: UIView {
     weak var delegate:ADFilterViewDelegate?
     private var filterType:ADFiltersType?
@@ -44,6 +54,7 @@ class ADFilterView: UIView {
         label.font = ADFont.systemBold_30
         label.textAlignment = .center
         label.text = ADString.filters
+        label.textColor = ADColor.black
         return label
     }()
     
@@ -125,16 +136,18 @@ class ADFilterView: UIView {
     lazy var sortSegmentedControl: UISegmentedControl = {
         let sortSegment = UISegmentedControl.init(items: [ADFiltersSort.distance.rawValue, ADFiltersSort.name.rawValue])
         sortSegment.addTarget(self, action: #selector(didSegmentedControlTap), for: .valueChanged)
-        sortSegment.tag = 1
         sortSegment.selectedSegmentTintColor = ADColor.buttonColor
+        sortSegment.setTitleTextAttributes([.font: ADFont.systemRegular_15,.foregroundColor: ADColor.black], for: .normal)
+        sortSegment.tag = 1
         return sortSegment
     }()
     
     lazy var categorySegmentedControl: UISegmentedControl = {
         let categorySegment = UISegmentedControl.init(items: [ADFiltersCategory.one.rawValue, ADFiltersCategory.two.rawValue, ADFiltersCategory.three.rawValue, ADFiltersCategory.more.rawValue])
         categorySegment.addTarget(self, action: #selector(didSegmentedControlTap), for: .valueChanged)
-        categorySegment.tag = 2
         categorySegment.selectedSegmentTintColor = ADColor.buttonColor
+        categorySegment.tag = 2
+        categorySegment.setTitleTextAttributes([.font: ADFont.systemRegular_15,.foregroundColor: ADColor.black], for: .normal)
         return categorySegment
     }()
     
@@ -216,6 +229,7 @@ class ADFilterView: UIView {
         label.font = ADFont.systemBold_20
         label.textAlignment = .left
         label.text = text
+        label.textColor = ADColor.black
         return label
     }
     

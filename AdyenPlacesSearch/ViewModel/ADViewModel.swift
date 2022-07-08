@@ -61,7 +61,6 @@ class ADViewModel {
     }
     
     var updatePlaces:(([Response.Place]?, Error?) -> ())?
-    var updateImage:((URL, Data?, Error?) -> ())?
     
     static private var sharedManager:ADViewModel? = ADViewModel()
     static func shared() -> ADViewModel{

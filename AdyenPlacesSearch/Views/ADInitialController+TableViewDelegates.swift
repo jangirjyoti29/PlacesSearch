@@ -7,6 +7,9 @@
 
 import UIKit
 
+/**
+ Implementation of all the delegates of UITableViewDataSource & UITableViewDelegate.
+ */
 extension ADInitialController : UITableViewDataSource {
     
     func numberOfSections(in tableView: UITableView) -> Int {

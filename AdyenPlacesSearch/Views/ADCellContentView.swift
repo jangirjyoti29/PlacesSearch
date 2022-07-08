@@ -17,6 +17,9 @@ extension ADCellContentViewDelegate {
     func loadImage(url:URL) {}
 }
 
+/**
+ A common Content view for cells.
+ */
 class ADCellContentView: UIView {
     weak var delegate:ADCellContentViewDelegate?
     
@@ -25,6 +28,7 @@ class ADCellContentView: UIView {
         name.font = ADFont.systemBold_20
         name.textAlignment = .left
         name.numberOfLines = 2
+        name.textColor = ADColor.black
         return name
     }()
     
@@ -33,6 +37,7 @@ class ADCellContentView: UIView {
         address.font = ADFont.systemRegular_15
         address.textAlignment = .left
         address.numberOfLines = 3
+        address.textColor = ADColor.black
         return address
     }()
     
@@ -40,6 +45,7 @@ class ADCellContentView: UIView {
         let distance = UILabel()
         distance.font = ADFont.systemLight_15
         distance.textAlignment = .left
+        distance.textColor = ADColor.black
         return distance
     }()
     
@@ -47,6 +53,7 @@ class ADCellContentView: UIView {
         let timezone = UILabel()
         timezone.font = ADFont.systemLight_13
         timezone.textAlignment = .left
+        timezone.textColor = ADColor.black
         return timezone
     }()
     
@@ -55,6 +62,7 @@ class ADCellContentView: UIView {
         neighborhood.font = ADFont.systemLight_15
         neighborhood.textAlignment = .left
         neighborhood.numberOfLines = 2
+        neighborhood.textColor = ADColor.black
         return neighborhood
     }()
     

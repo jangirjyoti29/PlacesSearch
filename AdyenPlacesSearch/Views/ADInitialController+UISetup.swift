@@ -7,12 +7,21 @@
 
 import UIKit
 
+/**
+ UI Setup for ADInitialController.
+ */
 extension ADInitialController {
-    
     func initialSetup() {
         topbarViewSetup()
         textLabelSetup()
         tableViewSetup()
+    }
+    
+    func topbarViewSetup() {
+        self.view.addSubview(topbarView)
+        topbarView.delegate = self
+        
+        topbarView.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, leading: self.view.safeAreaLayoutGuide.leadingAnchor, trailing: self.view.safeAreaLayoutGuide.trailingAnchor, topConstant: ADConstant.topBarConstant, leadingConstant: ADConstant.topBarConstant, trailingConstant: ADConstant.topBarConstant, heightConstant: ADConstant.topBarHeight)
     }
     
     func textLabelSetup() {
@@ -29,15 +38,11 @@ extension ADInitialController {
         
         tableView.anchor(top: topbarView.bottomAnchor, bottom: self.view.safeAreaLayoutGuide.bottomAnchor, leading: self.view.safeAreaLayoutGuide.leadingAnchor, trailing: self.view.safeAreaLayoutGuide.trailingAnchor, topConstant: ADConstant.tableViewTop, bottomConstant: 0, leadingConstant: 0, trailingConstant: 0)
     }
-    
-    func topbarViewSetup() {
-        self.view.addSubview(topbarView)
-        topbarView.delegate = self
-        
-        topbarView.anchor(top: self.view.safeAreaLayoutGuide.topAnchor, leading: self.view.safeAreaLayoutGuide.leadingAnchor, trailing: self.view.safeAreaLayoutGuide.trailingAnchor, topConstant: ADConstant.topBarConstant, leadingConstant: ADConstant.topBarConstant, trailingConstant: ADConstant.topBarConstant, heightConstant: ADConstant.topBarHeight)
-    }
 }
 
+/**
+ Implementation of  delegates of ADTopBarViewDelegate.
+ */
 extension ADInitialController : ADTopBarViewDelegate {
     func didTapOnFilterButton() {
         if filterType == nil, let range = searchDataSource?[0].totalRadius {
@@ -57,6 +62,9 @@ extension ADInitialController : ADTopBarViewDelegate {
     }
 }
 
+/**
+ Implementation of delegates of ADFilterViewDelegate.
+ */
 extension ADInitialController: ADFilterViewDelegate {
     func didPerformFilter(action: ADFiltersAction, type: ADFiltersType?) {
         switch action {
